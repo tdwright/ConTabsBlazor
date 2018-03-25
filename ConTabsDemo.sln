@@ -1,0 +1,31 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio 15
+VisualStudioVersion = 15.0.27520.0
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ConTabsDemo.Server", "ConTabsDemo\ConTabsDemo.Server\ConTabsDemo.Server.csproj", "{7D037E66-4A9D-41F4-8C55-7AAA0EDED955}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ConTabsDemo.Client", "ConTabsDemo\ConTabsDemo.Client\ConTabsDemo.Client.csproj", "{80CFC1C1-7929-42CC-98BD-BBC74D9862E5}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{7D037E66-4A9D-41F4-8C55-7AAA0EDED955}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{7D037E66-4A9D-41F4-8C55-7AAA0EDED955}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{7D037E66-4A9D-41F4-8C55-7AAA0EDED955}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{7D037E66-4A9D-41F4-8C55-7AAA0EDED955}.Release|Any CPU.Build.0 = Release|Any CPU
+		{80CFC1C1-7929-42CC-98BD-BBC74D9862E5}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{80CFC1C1-7929-42CC-98BD-BBC74D9862E5}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{80CFC1C1-7929-42CC-98BD-BBC74D9862E5}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{80CFC1C1-7929-42CC-98BD-BBC74D9862E5}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {38640093-96E9-4365-82DF-A5376C249A15}
+	EndGlobalSection
+EndGlobal

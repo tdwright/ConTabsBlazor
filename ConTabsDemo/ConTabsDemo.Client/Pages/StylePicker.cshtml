@@ -1,0 +1,101 @@
+﻿@page "/stylepicker"
+
+<h1>Style picker</h1>
+
+<p>Preview the ConTabs styles</p>
+
+@if (contents == null)
+{
+    <p><em>Loading...</em></p>
+}
+else
+{
+    <select id="stylePickerSelect" @bind(styleName)>
+        <option value="default">Default</option>
+        <option value="heavy">Heavy</option>
+        <option value="dots">Dots</option>
+        <option value="unicodeLines">Uncode Lines</option>
+        <option value="unicodeArcs">Unicode Arcs</option>
+        <option value="unicodePipes">Unicode Pipes</option>
+    </select>
+    <button @onclick(ChangeStyle)>Apply style</button>
+    <textarea class="console">@contents</textarea>
+}
+
+@functions {
+
+    string styleName;
+    Style style;
+    string contents;
+
+    protected override async Task OnInitAsync()
+    {
+        styleName = "default";
+        ChangeStyle();
+    }
+
+    void ChangeStyle()
+    {
+        switch (styleName)
+        {
+            case "default":
+                style = Style.Default;
+                break;
+            case "heavy":
+                style = Style.Heavy;
+                break;
+            case "dots":
+                style = Style.Dots;
+                break;
+            case "unicodeLines":
+                style = Style.UnicodeLines;
+                break;
+            case "unicodeArcs":
+                style = Style.UnicodeArcs;
+                break;
+            case "unicodePipes":
+                style = Style.UnicodePipes;
+                break;
+        }
+
+        contents = GetTableOutput();
+    }
+
+    protected string GetTableOutput()
+    {
+        var table = Table<Planet>.Create(ListOfDemoData());
+        table.TableStyle = style;
+        table.Columns["Fact"].LongStringBehaviour = LongStringBehaviour.Wrap;
+        table.Columns["Fact"].LongStringBehaviour.Width = 35;
+        table.Columns["Diameter"].Hide = true;
+        table.Columns["OrbitalPeriod"].ColumnName = "Year length";
+        table.Columns["DistanceFromSun"].Alignment = Alignment.Right;
+        table.Columns["DistanceFromSun"].FormatString = "###,###,###0 km";
+        table.Padding = new Padding(1);
+        return table.ToString();
+    }
+
+    public static List<Planet> ListOfDemoData()
+    {
+        return new List<Planet>
+            {
+                new Planet{Name="Mercury", DistanceFromSun=57909227, OrbitalPeriod=88F, Diameter=4879, Fact="Mercury is the smallest planet."},
+                new Planet{Name="Venus", DistanceFromSun=108209475, OrbitalPeriod=225F, Diameter=12104, Fact="Venus is the hottest planet."},
+                new Planet{Name="Earth", DistanceFromSun=149598262, OrbitalPeriod=365.24F, Diameter=12742, Fact="Earth is where we live"},
+                new Planet{Name="Mars", DistanceFromSun=227943824, OrbitalPeriod=693.5F, Diameter=6779, Fact="Mars is also often described as the “Red Planet” due to its reddish appearance."},
+                new Planet{Name="Jupiter", DistanceFromSun=778340821, OrbitalPeriod=4343.5F, Diameter=139822, Fact="Jupiter is the largest planet."},
+                new Planet{Name="Saturn", DistanceFromSun=1426666422, OrbitalPeriod=10767.5F, Diameter=116464, Fact="Saturn is best known for its fabulous ring system that was first observed in 1610 by the astronomer Galileo Galilei."},
+                new Planet{Name="Uranus", DistanceFromSun=2870658186, OrbitalPeriod=30660F, Diameter=50724, Fact="Uranus became the first planet discovered with the use of a telescope."},
+                new Planet{Name="Neptune", DistanceFromSun=4498396441, OrbitalPeriod=60152F, Diameter=49244, Fact="On average Neptune is the coldest planet"}
+            };
+    }
+
+    public class Planet
+    {
+        public string Name { get; set; }
+        public long DistanceFromSun { get; set; }
+        public int Diameter { get; set; }
+        public float OrbitalPeriod { get; set; }
+        public string Fact { get; set; }
+    }
+}
